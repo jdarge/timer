@@ -13,7 +13,7 @@ $ ./build/bin/timer --help
 
 ## General flags for the application:
 ```console
---help          Displays the help screen.\n"
+    --help      Displays the help screen.\n"
 -s, --second    Input second(s) before alarm rings.
 -m, --minute    Input minute(s) before alarm rings.
 -h, --hour      Input hour(s) before alarm rings.
