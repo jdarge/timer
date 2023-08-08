@@ -36,22 +36,21 @@ int check_arguments(int argc, char** argv) {
 
     const char* errstr;
 
-    if (!is_num(argv[2])) return -2;
+    if (!is_num(argv[2])) 
+        return -2;
 
-    if (
-        !is_format(argv[1])
-    ) {
-        strtonum(argv[2], 0, 0, &errstr);
-    } else {
+    if (is_format(argv[1])) {
         // TODO: should allow the use of unlimited hours?
         //       for now, it's left to double digit hours
         if (strlen(argv[2]) != 6) 
             return -1;
         strtonum(argv[2], 1, 999999, &errstr);
+    } else {
+        strtonum(argv[2], 0, 0, &errstr);
     }
 
     if (errstr) {
-        printf("%s\n\n", errstr);
+        printf("ERROR: STRTONUM; number is %s\n", errstr);
     FAULT:
         return 1;
     }
