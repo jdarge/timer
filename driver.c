@@ -28,7 +28,7 @@ int main (int argc, char** argv) {
         goto FAULT;
     }
 
-    char* alarm = "sound/alarm.mp3";// TODO: fix for install path?
+    char* alarm = "/usr/local/share/timer/sound/alarm.mp3";
     AUDIO* a = audio_init(alarm);
     if(!a) return 1;
 
@@ -40,8 +40,6 @@ int main (int argc, char** argv) {
 
     audio_clean(a);
     free(a);
-
-    system()
 
     return 0;
 }
@@ -64,3 +62,4 @@ TODO:
 # dnf install mpg123-devel
 # dnf install libao-devel
 */
+
