@@ -1,4 +1,5 @@
 # Timer
+[![Demo video](https://img.youtube.com/vi/iHWzUJcnE0k/maxresdefault.jpg)](https://youtu.be/iHWzUJcnE0k)
 
 ## Files required to make this application
 1. ao library
