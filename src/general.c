@@ -51,8 +51,8 @@ int check_arguments(int argc, char** argv) {
     }
 
     if (errstr) {
-    FAULT:
         printf("%s\n\n", errstr);
+    FAULT:
         return 1;
     }
 
