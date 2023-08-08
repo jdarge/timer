@@ -1,9 +1,5 @@
 # Timer
 
-Currently there is no installation method in place.<br>
-### Note
-This has only been tested for Linux based operating systems.
-
 ## How to generate the binary file:
 ```console
 $ chmod +x run.sh
@@ -22,3 +18,8 @@ $ ./build/bin/timer --help
                 Example: -f 031530
                          will run for 03 hours, 15 minutes, 30 seconds
 ```
+
+### Note
+Currently there is no installation method in place.<br>
+This has only been tested for Linux based operating systems.<br>
+This is still under development but it does function as intended, as far as I know.<br>
