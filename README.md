@@ -16,11 +16,24 @@
 # dnf install libao-devel mpg123-devel
 ```
 
-## How to generate the binary file:
+## How to install timer application:
+```console
+$ chmod +x install.sh
+# ./install.sh
+```
+
+## How to uninstall:
+```console
+$ chmod +x uninstall.sh
+# ./uninstall.sh
+```
+
+## How to generate the binary file, for those who wish to avoid installation:
 ```console
 $ chmod +x run.sh
 $ ./run.sh
 $ ./build/bin/timer --help
+Line 31 of driver.c dictates where the audio comes from. If you do not wish to install this application, please change this string value to a more appropriate path.
 ```
 
 ## General flags for the application:
@@ -36,11 +49,10 @@ $ ./build/bin/timer --help
 ```
 
 ## Usage notes:
-Once the alarm starts to go off, you cann press any key to kill it; subsequently killing the program all together.
+Once the alarm starts to go off, you can press any key to kill it; subsequently killing the program all together.
 
 ## Further notes:
 This has only been tested for Linux based operating systems.<br>
 This is still under development but it does function as intended, as far as I know.<br>
-Line 31 of driver.c dictates where the audio comes from. If you do not wish to install this application, please change this string value to a more appropriate path.
 
 TODO: allow user to specify mp3 file for alarm noise
