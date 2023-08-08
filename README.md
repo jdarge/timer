@@ -19,7 +19,10 @@ $ ./build/bin/timer --help
                          will run for 03 hours, 15 minutes, 30 seconds
 ```
 
-### Note
+## Usage notes:
+Once the alarm starts to go off, you cann press any key to kill it; subsequently killing the program all together.
+
+## Further notes:
 Currently there is no installation method in place.<br>
 This has only been tested for Linux based operating systems.<br>
 This is still under development but it does function as intended, as far as I know.<br>
