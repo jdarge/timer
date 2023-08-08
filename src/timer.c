@@ -10,9 +10,9 @@
 
 int timer (char** str) {
 
-	int duration = get_time_in_s(str[1], str[2]);
+    int duration = get_time_in_s(str[1], str[2]);
 
-	time_t start_time = time(NULL);
+    time_t start_time = time(NULL);
     time_t end_time = start_time + duration;
 
     while (time(NULL) < end_time) {
