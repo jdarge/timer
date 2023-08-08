@@ -41,6 +41,7 @@ int get_time_in_s(char* str, char* num) {
 
     int duration;
     const char* errstr;
+    char h[3], m[3], s[3]; 
 
     if(is_format(str)) {
         goto format;
@@ -54,7 +55,6 @@ int get_time_in_s(char* str, char* num) {
 
     if(0) {
     format:
-        char h[3], m[3], s[3]; 
         h[0]=num[0];h[1]=num[1];h[2]='\0';
         m[0]=num[2];m[1]=num[3];m[2]='\0';
         s[0]=num[4];s[1]=num[5];s[2]='\0';

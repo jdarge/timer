@@ -59,6 +59,10 @@ int check_arguments(int argc, char** argv) {
     return 0;
 }
 
+void clear_line() {
+    printf("\r\033[K");
+}
+
 int is_second(char* s) {
     if (strcmp(s, "-s") != 0 &&
         strcmp(s, "--second") != 0
@@ -97,8 +101,4 @@ int is_format(char* s) {
     }
 
     return 1;
-}
-
-void clear_line() {
-    printf("\r\033[K");
 }

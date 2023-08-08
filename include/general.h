@@ -6,6 +6,7 @@
  
 void display_help ();
 int check_arguments (int argc, char** argv);
+void clear_line();
 
 #undef is_second
 
@@ -13,7 +14,5 @@ int is_second(char* s);
 int is_minute(char* s);
 int is_hour(char* s);
 int is_format(char* s);
-
-void clear_line();
 
 #endif

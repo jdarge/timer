@@ -1,37 +1,23 @@
 #include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
 #include <pthread.h>
 #include <stdbool.h>
-#include <unistd.h>
 
 #include "audio.h"
 #include "general.h"
-#include "keyboard.h"
-#include "number.h"
 #include "timer.h"
 
-volatile bool allowInput = false;
+volatile bool allow_input = false;
 
-void* inputThread(void* arg) {
-    int c;
-    while (!allowInput) {
-        c = getchar();
-        if (c == '\n' || c == EOF) {
-            allowInput = true;
-            break;
-        }
-    }
-    return NULL;
-}
+void* input_thread();
 
 int main (int argc, char** argv) {
 
     // used to capture user input prior to timer going off
-    pthread_t inputThreadId;
-    pthread_create(&inputThreadId, NULL, inputThread, NULL);
+    pthread_t input_thread_id;
+    pthread_create(&input_thread_id, NULL, input_thread, NULL);
 
     if (argc == 1 || argc > 3) {
+    FAULT:
         display_help();
         return 1;
     }
@@ -39,8 +25,7 @@ int main (int argc, char** argv) {
     int check = check_arguments(argc, argv);
     if (check > 0) return 1; // strtonum error
     if (check < 0) { // formatting error
-        display_help();
-        return 1;
+        goto FAULT;
     }
 
     char* alarm = "sound/alarm.mp3";// TODO: fix for install path?
@@ -51,14 +36,27 @@ int main (int argc, char** argv) {
     if(t) return 1;
 
     play_alarm(a);
-    pthread_join(inputThreadId, NULL);
+    pthread_join(input_thread_id, NULL);
 
     audio_clean(a);
     free(a);
 
+    system()
+
     return 0;
 }
 
+void* input_thread() {
+    int c;
+    while (!allow_input) {
+        c = getchar();
+        if (c == '\n' || c == EOF) {
+            allow_input = true;
+            break;
+        }
+    }
+    return NULL;
+}
 
 
 /* 

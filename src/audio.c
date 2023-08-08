@@ -105,10 +105,12 @@ void play_alarm (AUDIO* a) {
 }
 
 void audio_clean (AUDIO* a) {
-
-    ao_close(a->dev);
-    mpg123_close(a->mh);
-    mpg123_delete(a->mh);
+    if(a->dev)
+        ao_close(a->dev);
+    if(a->mh) {
+        mpg123_close(a->mh);
+        mpg123_delete(a->mh);
+    }
     mpg123_exit();
     ao_shutdown();
 }
