@@ -8,16 +8,16 @@
 
 volatile bool allow_input = false;
 
-void* input_thread();
+void *input_thread(void *arg);
 
-int main (int argc, char** argv) {
+int main(int argc, char **argv) {
 
     // used to capture user input prior to timer going off
     pthread_t input_thread_id;
     pthread_create(&input_thread_id, NULL, input_thread, NULL);
 
     if (argc == 1 || argc > 3) {
-    FAULT:
+        FAULT:
         display_help();
         return 1;
     }
@@ -28,12 +28,14 @@ int main (int argc, char** argv) {
         goto FAULT;
     }
 
-    char* alarm = "/usr/local/share/timer/sound/alarm.mp3";
-    AUDIO* a = audio_init(alarm);
-    if(!a) return 1;
+    char *alarm = "/usr/local/share/timer/sound/alarm.mp3"; // install
+    // char *alarm = "sound/alarm.mp3"; // debugging
+
+    AUDIO *a = audio_init(alarm);
+    if (!a) return 1;
 
     int t = timer(argv);
-    if(t) return 1;
+    if (t) return 1;
 
     play_alarm(a);
     pthread_join(input_thread_id, NULL);
@@ -44,7 +46,9 @@ int main (int argc, char** argv) {
     return 0;
 }
 
-void* input_thread() {
+void *input_thread(void *arg) {
+    (void) arg;  // to avoid unused variable warning lol
+
     int c;
     while (!allow_input) {
         c = getchar();
@@ -56,10 +60,8 @@ void* input_thread() {
     return NULL;
 }
 
-
 /* 
 TODO: 
 # dnf install mpg123-devel
 # dnf install libao-devel
 */
-

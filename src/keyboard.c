@@ -6,7 +6,7 @@
 #include "keyboard.h"
 
 // Function to check if a key has been pressed
-int kbhit() {
+int kbhit(void) {
     struct termios oldt, newt;
     int ch;
     int oldf;
@@ -23,7 +23,7 @@ int kbhit() {
     tcsetattr(STDIN_FILENO, TCSANOW, &oldt);
     fcntl(STDIN_FILENO, F_SETFL, oldf);
 
-    if(ch != EOF) {
+    if (ch != EOF) {
         ungetc(ch, stdin);
         return 1;
     }

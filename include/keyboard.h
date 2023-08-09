@@ -2,6 +2,6 @@
 #define TIMER_KEYBOARD_INCLUDED
 
 // Function to check if a key has been pressed
-int kbhit();
+int kbhit(void);
 
 #endif
