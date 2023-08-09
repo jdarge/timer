@@ -7,7 +7,7 @@ Demo video:
 2. mpg123 library
 ### Arch installation:
 ```console
-# pacman -Sy libao lib32-mpg123
+# pacman -Sy libao mpg123 --needed
 ```
 ### Debian installation:
 ```console
