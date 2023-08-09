@@ -2,16 +2,16 @@
 
 project="timer"
 
-if [ "$1" == "build" ] || [ "$1" == "make" ]; then
+if [ "$1" = "build" ] || [ "$1" = "make" ]; then
   cmake -B build/cmake/ -S .
   make -C build/cmake/
-elif [ "$1" == "rebuild" ]; then
+elif [ "$1" = "rebuild" ]; then
   rm -rf build/bin/* build/cmake/*
   cmake -B build/cmake/ -S .
   make -C build/cmake/
-elif [ "$1" == "clean" ]; then
+elif [ "$1" = "clean" ]; then
   rm -rf build/
-elif [ "$1" == "help" ]; then
+elif [ "$1" = "help" ]; then
   echo -e "Build project:\t ./run build"
   echo -e "Rebuild project: ./run rebuild"
   echo -e "Clean project:\t ./run clean"
