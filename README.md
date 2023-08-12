@@ -5,9 +5,11 @@ Demo video:
 ## Files required to make this application
 1. ao library
 2. mpg123 library
+<!---
 #### Note:
 If mpg123 is not a library that's currently supported by your OS, try this [branch](https://github.com/jdarge/timer/tree/indep).
 ### Arch installation:
+--->
 ```console
 # pacman -Sy libao mpg123 --needed
 ```
