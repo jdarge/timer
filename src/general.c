@@ -29,8 +29,9 @@ int check_arguments(int argc, char **argv) {
             !is_minute(argv[1]) &&
             !is_hour(argv[1]) &&
             !is_format(argv[1])
-            )
-        goto FAULT;
+    ) {
+        return 1;
+    }
 
     if (strcmp(argv[1], "--help") == 0) return -1;
     if (argc < 3) return -1; // failed to input a number, only entered flag
@@ -52,7 +53,6 @@ int check_arguments(int argc, char **argv) {
 
     if (errstr) {
         printf("ERROR: STRTONUM; number is %s\n", errstr);
-        FAULT:
         return 1;
     }
 
@@ -66,7 +66,7 @@ void clear_line(void) {
 int is_second(char *s) {
     if (strcmp(s, "-s") != 0 &&
         strcmp(s, "--second") != 0
-            ) {
+    ) {
         return 0;
     }
 
@@ -76,7 +76,7 @@ int is_second(char *s) {
 int is_minute(char *s) {
     if (strcmp(s, "-m") != 0 &&
         strcmp(s, "--minute") != 0
-            ) {
+    ) {
         return 0;
     }
 
@@ -86,7 +86,7 @@ int is_minute(char *s) {
 int is_hour(char *s) {
     if (strcmp(s, "-h") != 0 &&
         strcmp(s, "--hour") != 0
-            ) {
+    ) {
         return 0;
     }
 
@@ -96,7 +96,7 @@ int is_hour(char *s) {
 int is_format(char *s) {
     if (strcmp(s, "-f") != 0 &&
         strcmp(s, "--format") != 0
-            ) {
+    ) {
         return 0;
     }
 
