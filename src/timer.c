@@ -38,22 +38,11 @@ int timer(char **str) {
 
 int get_time_in_s(char *str, char *num) {
 
-    int duration;
+    int duration = 0;
     const char *errstr;
     char h[3], m[3], s[3];
 
     if (is_format(str)) {
-        goto format;
-    }
-
-    duration = (int) strtonum(num, 0, 0, &errstr);
-    if (is_minute(str))
-        duration *= 60;
-    if (is_hour(str))
-        duration *= 3600;
-
-    if (0) {
-        format:
         h[0] = num[0];
         h[1] = num[1];
         h[2] = '\0';
@@ -69,7 +58,15 @@ int get_time_in_s(char *str, char *num) {
         duration = (int) strtonum(h, 0, 99, &errstr) * 3600;
         duration += (int) strtonum(m, 0, 99, &errstr) * 60;
         duration += (int) strtonum(s, 0, 99, &errstr);
+
+        return duration;
     }
+
+    duration = (int) strtonum(num, 0, 0, &errstr);
+    if (is_minute(str))
+        duration *= 60;
+    if (is_hour(str))
+        duration *= 3600;
 
     return duration;
 }
