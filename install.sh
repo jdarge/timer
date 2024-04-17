@@ -2,7 +2,7 @@
 
 # Generate Binary Executable
 chmod +x run.sh
-./run.sh
+./run.sh build
 
 # Detect the user's shell
 SHELL_CONFIG_FILE=""
